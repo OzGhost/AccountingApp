@@ -430,6 +430,39 @@ public class PayLogView extends JFrame implements Observer {
         rs[8] = customerBankName.getText();
         return rs;
     }
+    
+    private void notice(String content, int mode) {
+        String title = "";
+        switch (mode) {
+            case JOptionPane.WARNING_MESSAGE: title = "WARNING"; break;
+            case JOptionPane.ERROR_MESSAGE: title = "ERROR!"; break;
+            case JOptionPane.QUESTION_MESSAGE: title = "Answer it, do you?"; break;
+            case JOptionPane.INFORMATION_MESSAGE: title = "INFORMATION"; break;
+            default : title = "Message"; break;
+        }
+        JOptionPane.showMessageDialog(
+                null,
+                content,
+                title,
+                mode
+        );
+    }
+
+    private void noticeInfo(String content) {
+        notice(content, JOptionPane.INFORMATION_MESSAGE);
+    }
+
+    private void noticeError(String content) {
+        notice(content, JOptionPane.ERROR_MESSAGE);
+    }
+
+    public void noticeResult(boolean rs) {
+        if (rs) {
+            noticeInfo("Save Complete!");
+        } else {
+            noticeError("Save Failure!");
+        }
+    }
 
     public void noticeWarning(String content) {
         JOptionPane.showMessageDialog(

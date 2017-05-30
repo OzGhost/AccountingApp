@@ -113,13 +113,10 @@ public class ReportModel {
         final PayLogParamDto plp = new PayLogParamDto();
         plp.setFrom(from);
         plp.setTo(to);
-        plp.setTitle("Test export data");
+        plp.setTitle("BÁO CÁO SỐ PHIẾU THU/CHI");
         plp.setDate4mat(forQ);
-        plp.setTypes(types.size());
         plp.setGroupBy(groupBy);
-        plp.setTimeLabel("Time");
-        plp.setTicketLabel("Log type");
-        plp.setAmountLabel("Number of ticket");
+        plp.setTimeLabel("Thời gian");
 
         exportAsPdf(plp, data, outFile);
     }
@@ -130,16 +127,23 @@ public class ReportModel {
         ) throws Exception {
         if (data == null)
             return;
+        
+        List<String> label = new ArrayList<>(9);
+        label.add(plp.getTitle());
+        label.add("Kết xuất ngày:");
+        label.add("Từ ngày:");
+        label.add("Đến ngày:");
+        label.add("Tính trên từng:");
+        label.add(plp.getGroupBy());
+        label.add("Thời gian");
+        label.add("Loại phiếu");
+        label.add("Số lượng");
+        
         Map<String, Object> param = new HashMap<>();
-        param.put("title", plp.getTitle());
         param.put("date4mat", plp.getDate4mat());
-        param.put("timeLabel", plp.getTimeLabel());
-        param.put("ticketLabel", plp.getTicketLabel());
-        param.put("amountLabel", plp.getAmountLabel());
         param.put("from", plp.getFrom());
         param.put("to", plp.getTo());
-        param.put("types", plp.getTypes());
-        param.put("gby", plp.getGroupBy());
+        param.put("label", label);
 
         JasperPrint jPrint = null;
         jPrint = JasperFillManager.fillReport(

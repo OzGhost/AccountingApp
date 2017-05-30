@@ -157,7 +157,7 @@ public class PayLogController implements ActionListener {
                 return;
             }
             Object[] metaData = view.getMetaData();
-            model.saveDown(metaData);
+            view.noticeResult(model.saveDown(metaData));
             return;
         }
     }

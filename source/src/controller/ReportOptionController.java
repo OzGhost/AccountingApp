@@ -34,11 +34,14 @@ public class ReportOptionController implements ActionListener {
             return;
         }
         if (Constants.ACTION_DONE.equals(cmd)) {
+            view.beWait();
             final Object[] metaData = view.getMetaData();
             if (metaData == null) {
+                view.loaded();
                 return;
             }
             view.noticeResult(model.takeCare(metaData));
+            view.loaded();            
         }
     }
 

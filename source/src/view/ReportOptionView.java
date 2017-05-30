@@ -188,6 +188,18 @@ public class ReportOptionView extends JFrame implements Observer {
         rs[4] = f;
         return rs;
     }
+    
+    public void beWait() {
+        bt_back.setEnabled(false);
+        bt_go.setEnabled(false);
+        bt_go.setText("Loading...");
+    }
+    
+    public void loaded() {
+        bt_back.setEnabled(true);
+        bt_go.setEnabled(true);
+        bt_go.setText("Export Now");
+    }
 
     @Override
     public void update(Observable o, Object arg) {
