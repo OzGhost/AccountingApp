@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="rp" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="c5cac307-746c-48d9-a69c-b9161e21158f">
+	<property name="ireport.zoom" value="1.000000000000006"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="date4mat" class="java.text.DateFormat"/>
+	<parameter name="title" class="java.lang.String"/>
+	<parameter name="timeLabel" class="java.lang.String"/>
+	<parameter name="ticketLabel" class="java.lang.String"/>
+	<parameter name="amountLabel" class="java.lang.String"/>
+	<parameter name="from" class="java.util.Date"/>
+	<parameter name="to" class="java.util.Date"/>
+	<parameter name="types" class="java.lang.Integer"/>
+	<parameter name="gby" class="java.lang.String"/>
+	<field name="time" class="java.util.Date"/>
+	<field name="ticketType" class="java.lang.String"/>
+	<field name="amount" class="java.lang.Integer"/>
+	<title>
+		<band height="395" splitType="Stretch">
+			<textField>
+				<reportElement x="11" y="0" width="413" height="51" uuid="94282e96-903c-4ec5-9436-9904732af241"/>
+				<textElement>
+					<font fontName="DejaVu Sans" size="28" isBold="true" isItalic="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258" isPdfEmbedded="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{title}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="71" y="51" width="214" height="20" uuid="b8db66c0-e54f-44d7-b2d7-b03a78e2e6c1"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isItalic="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date4mat}.format( new java.util.Date() )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="103" width="46" height="20" uuid="ba9843f0-4377-4b8b-a234-cee5f8bca7e9"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[From:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="12" y="51" width="58" height="20" uuid="0395adff-6c69-4b07-830e-2e0ebfcbba95"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" isItalic="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Create:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="285" y="103" width="38" height="20" uuid="e065354f-f9a0-48f6-9fad-8fa331ddc889"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[To:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="323" y="103" width="212" height="20" uuid="2ed3e704-b36f-41cf-85d1-3e76d5de6a57"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date4mat}.format( $P{to} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="58" y="103" width="195" height="20" uuid="4432469e-ba5a-4de7-aa4d-3157fb25d91c"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date4mat}.format( $P{from} )]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="285" y="137" width="77" height="20" uuid="fc8a7a86-cc62-452a-bc3d-1ae819b43b8e"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Group by:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="363" y="137" width="172" height="20" uuid="3890812f-0259-4132-b696-5f0ce270e2be"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{gby}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="12" y="137" width="58" height="20" uuid="a882070f-772c-4733-a0ad-ec8f255cd4b2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<text><![CDATA[Types:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="70" y="137" width="195" height="20" uuid="6b04812e-c395-41d2-8b92-a76dc57e66f2"/>
+				<textElement verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{types}]]></textFieldExpression>
+			</textField>
+			<rectangle>
+				<reportElement x="-20" y="81" width="593" height="5" forecolor="#FFFFFF" backcolor="#FF6666" uuid="c61859f4-d4f2-4328-a5ac-19a19fed5844"/>
+			</rectangle>
+			<barChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="179" width="555" height="201" uuid="dc6bb6a6-d2e5-4b9d-bf06-ce1395a42a83"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA[$F{ticketType}]]></seriesExpression>
+						<categoryExpression><![CDATA[$P{date4mat}.format( $F{time} )]]></categoryExpression>
+						<valueExpression><![CDATA[$F{amount}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<barPlot>
+					<plot/>
+					<itemLabel/>
+					<categoryAxisFormat>
+						<axisFormat/>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat/>
+					</valueAxisFormat>
+				</barPlot>
+			</barChart>
+		</band>
+	</title>
+	<columnHeader>
+		<band height="20" splitType="Stretch">
+			<frame>
+				<reportElement mode="Opaque" x="0" y="0" width="555" height="20" forecolor="#CCFFCC" backcolor="#CCFFCC" uuid="1750fd62-f867-4b66-852b-7272785aa75e"/>
+				<textField>
+					<reportElement x="12" y="0" width="170" height="20" uuid="1acd8c00-9474-4254-9e1c-73a5c89d33c9"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="14" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{timeLabel}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="182" y="0" width="229" height="20" uuid="1bfc71e6-19e1-4d68-991a-c956f1660b6e"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="14" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{ticketLabel}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="411" y="0" width="124" height="20" uuid="a32bdb82-2303-4798-982d-f9c2941bc252"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font fontName="DejaVu Sans" size="14" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$P{amountLabel}]]></textFieldExpression>
+				</textField>
+			</frame>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement x="12" y="0" width="170" height="20" uuid="b33ce76e-e8f8-44c4-97fc-d21811e92e1c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{date4mat}.format( $F{time} )]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="182" y="0" width="229" height="20" uuid="3373ec94-570f-4b60-81e8-e91702b8097e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ticketType}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="411" y="0" width="124" height="20" uuid="758d3d10-3df3-4925-b2e3-2d21e85b9244"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="DejaVu Sans" size="14" isUnderline="false" pdfFontName="DejaVu Sans" pdfEncoding="Cp1258"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{amount}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="12" y="0" width="523" height="1" forecolor="#999999" uuid="3000e833-3e9e-4954-b23f-e9334f4c449b"/>
+			</line>
+		</band>
+	</detail>
+</jasperReport>

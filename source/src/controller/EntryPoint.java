@@ -1,17 +1,12 @@
 package controller;
 
 import java.awt.Font;
-import java.awt.Image;
-import java.awt.Toolkit;
-import java.net.URL;
-import java.util.Date;
 import java.util.Enumeration;
 
 import javax.swing.UIManager;
 import javax.swing.plaf.FontUIResource;
 
 import common.Constants;
-import db.PayLog;
 import db.db;
 import model.PayLogModel;
 import view.PayLogView;
@@ -19,11 +14,9 @@ import view.PayLogView;
 public class EntryPoint {
 	public static void main (String[] args) {
 		
-		db.init("orcbase", "c##tester", "ngaymai");
+  		db.init("orcbase", "c##tester", "ngaymai");
 	    
-	    URL url = ClassLoader.getSystemResource("res/icon.png");
-	    Toolkit kit = Toolkit.getDefaultToolkit();
-	    Image img = kit.createImage(url);
+	    
 	    
 	    
 	    try {
@@ -54,8 +47,31 @@ public class EntryPoint {
 		plc.setView(plv);
 		plc.setModel(plm);
 		plv.addController(plc);
-		plv.setIconImage(img);
 		plv.setVisible(true);
 		
+        /*
+        DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+        Date from = null;
+        Date to = null;
+        List<String> types = new ArrayList<>();
+        String gby = "MONTH";
+
+        types.add(Constants.PAY_LOG_TYPES[0]);
+        types.add(Constants.PAY_LOG_TYPES[1]);
+        types.add(Constants.PAY_LOG_TYPES[2]);
+        types.add(Constants.PAY_LOG_TYPES[3]);
+        types.add(Constants.PAY_LOG_TYPES[4]);
+        types.add(Constants.PAY_LOG_TYPES[5]);
+        types.add(Constants.PAY_LOG_TYPES[6]);
+        try {
+            from = df.parse("2015-01-01");
+            to = df.parse("2015-09-30");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        ReportModel.exportNow(from, to, types, gby, 2);
+        */
+
 	}
 }

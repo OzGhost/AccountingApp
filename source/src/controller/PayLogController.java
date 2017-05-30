@@ -2,7 +2,6 @@ package controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 import java.util.List;
 
 import common.Constants;
@@ -11,9 +10,11 @@ import db.Customer;
 import model.AccountListModel;
 import model.CustomerListModel;
 import model.PayLogModel;
+import model.ReportOptionModel;
 import view.AccountListView;
 import view.CustomerListView;
 import view.PayLogView;
+import view.ReportOptionView;
 
 public class PayLogController implements ActionListener {
     
@@ -28,6 +29,7 @@ public class PayLogController implements ActionListener {
         this.model = model;
     }
     
+    @SuppressWarnings("unchecked")
     public void beNoticed(Object c){
         view.setVisible(true);
         if (c == null) {
@@ -45,6 +47,10 @@ public class PayLogController implements ActionListener {
             model.specifyMainAccount( (Account) c);
             return;
         }
+        if (c instanceof Integer) {
+            view.setVisible(true);
+            return;
+        }
     }
 
     @Override
@@ -54,7 +60,6 @@ public class PayLogController implements ActionListener {
             return;
         }
         String cmd = e.getActionCommand();
-        System.out.println("signal: " + cmd);
         if (cmd.isEmpty()) return;
         if (cmd.equals(Constants.ACTION_NEW_CUSTOMMER)){
             view.resetCustomerForm();
@@ -93,7 +98,6 @@ public class PayLogController implements ActionListener {
             alm.init();
             alv.setController(alc);
 
-            alc.setModel(alm);
             alc.setView(alv);
             alc.setWatcher(this);
 
@@ -113,7 +117,6 @@ public class PayLogController implements ActionListener {
             alm.init();
             alv.setController(alc);
 
-            alc.setModel(alm);
             alc.setView(alv);
             alc.setWatcher(this);
 
@@ -126,11 +129,31 @@ public class PayLogController implements ActionListener {
             model.removeCoAcc(view.getSelectedCoAccRows());
             return;
         }
+        if (Constants.ACTION_EXPORT.equals(cmd)) {
+
+            ReportOptionModel rom = new ReportOptionModel();
+            ReportOptionView rov = new ReportOptionView();
+            ReportOptionController roc = new ReportOptionController();
+
+            roc.setModel(rom);
+            roc.setView(rov);
+            roc.setWatcher(this);
+
+            rom.addObserver(rov);
+            rom.init();
+
+            rov.setController(roc);
+
+            view.setVisible(false);
+            rov.setVisible(true);
+        }
         if (Constants.ACTION_DONE.equals(cmd)) {
             boolean sati = model.verifyData();
             sati = sati && view.verifyData(model.getCustomer() == null);
             if (!sati) {
-                view.noticeWarning("Make sure you do not missing every thing! Try again!");
+                view.noticeWarning(
+                        "Make sure you do not missing any thing! Try again!"
+                );
                 return;
             }
             Object[] metaData = view.getMetaData();

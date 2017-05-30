@@ -34,9 +34,14 @@ public class CustomerListView extends JFrame implements Observer {
     private JPanel panel;
     private SpringLayout layout;
     
+    public CustomerListView() {
+        setIconImage(Constants.appIcon);
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Select customer was saved before");
+    }
+    
     public void init(){
         
-        setTitle("Select customer was saved before");
         setPreferredSize(new Dimension(800, 600));
         setLocationRelativeTo(null);
         setSize(800, 600);

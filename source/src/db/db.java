@@ -69,8 +69,6 @@ public abstract class db {
             System.err.println("---- ERROR: Connection is missing! Please initial connection before use it");
             return null;
         }
-        // for debug only
-        System.out.println("---- DEBUG: db.sendForResult(?) : " + sqlcmd);
         try {
             db.rs = db.stm.executeQuery(sqlcmd);
         } catch (Exception e) {
@@ -89,8 +87,6 @@ public abstract class db {
             System.err.println("---- ERROR: Connection is missing! Please initial connection before use it");
             return false;
         }
-        // for debug only
-        System.out.println("---- db.send(?) : " + sqlcmd);
         boolean rs = true;
         try {
             db.rs = db.stm.executeQuery(sqlcmd);

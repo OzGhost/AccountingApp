@@ -43,8 +43,11 @@ public class AccountListView extends JFrame implements Observer {
             singleMode = false;
         }
         init();
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setTitle("Select Account(s)");
         setContentPane(panel);
         setPreferredSize(new Dimension(800, 600));
+        setIconImage(Constants.appIcon);
         pack();
         setLocationRelativeTo(null);
     }

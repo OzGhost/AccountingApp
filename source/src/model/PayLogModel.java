@@ -6,10 +6,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.Observable;
 
-import db.db;
 import db.Account;
 import db.Customer;
 import db.PayLog;
+import db.db;
 
 public class PayLogModel extends Observable {
 

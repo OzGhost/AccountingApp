@@ -68,6 +68,8 @@ public class PayLogView extends JFrame implements Observer {
 	
 	public PayLogView() {
 		init();
+		setIconImage(Constants.appIcon);
+		setTitle("Pay Log App");
 	}
 	
 	private void init() {
@@ -337,7 +339,7 @@ public class PayLogView extends JFrame implements Observer {
 		bt_cancel = Genner.createButton("Exit", Genner.MEDIUM_SIZE);
 		bt_cancel.setActionCommand(Constants.ACTION_EXIT);
 		bt_export = Genner.createButton("Export", Genner.MEDIUM_SIZE);
-		bt_export.setActionCommand("export");
+		bt_export.setActionCommand(Constants.ACTION_EXPORT);
 		bt_reset = Genner.createButton("Reset", Genner.MEDIUM_SIZE);
 		bt_reset.setActionCommand("reset");
 	}

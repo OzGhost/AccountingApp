@@ -15,6 +15,7 @@ public abstract class Genner {
     public static final short MEDIUM_SIZE = 4;
     public static final short BIG_SIZE = 8;
     public static final short SMALL_SIZE = 2;
+    public static final short MEDIUM_LONG_SIZE = 16;
     
     /**
      * Quick new a button (for view only)
@@ -38,6 +39,10 @@ public abstract class Genner {
         (size == SMALL_SIZE){
             btSize = Constants.buttonSizeSm;
             btFont = Constants.fontSizeSm;
+        } else if
+        (size == MEDIUM_LONG_SIZE) {
+            btSize = Constants.buttonSizeMld;
+            btFont = Constants.fontSizeMd;
         }
         rs.setPreferredSize(btSize);
         rs.setFont(btFont);

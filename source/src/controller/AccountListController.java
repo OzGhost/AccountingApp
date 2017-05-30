@@ -4,19 +4,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import common.Constants;
-import model.AccountListModel;
 import view.AccountListView;
 
 public class AccountListController implements ActionListener {
 
-    private AccountListModel model;
     private AccountListView view;
     private PayLogController watcher;
 
     // Setter
-    public void setModel (AccountListModel m) {
-        this.model = m;
-    }
     public void setView (AccountListView v) {
         this.view = v;
     }
